@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Mostrar Dados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient( to right, rgb(171, 22, 22),#fff, #000000);
+        }
+        .container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .dados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/calcetal.png" alt="">
+        <h1>Dados Recebidos</h1>
+
+           <p> <i class="fa-solid fa-person"></i> Nome: carlos </p> 
+            <p> <i class="fa-solid fa-key"></i> Code: 001</p>
+            <p><i class="fa-solid fa-gas-pump"></i> Litros: 400</p>
+            <p><i class="fa-solid fa-clock"></i> Hora: 05:55</p>
+            <p><i class="fa-solid fa-calendar-days"></i> Data: 30/08/2024</p>
+        
+        <div class="dados" id="dados-container">
+            <!-- Os dados serão exibidos aqui -->
+       
+
+    <script>
+        // Função para pegar os dados da URL
+        function getFormData() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const dados = {
+                nome: urlParams.get('nome'),
+                code: urlParams.get('code'),
+                litros: urlParams.get('litros'),
+                hora: urlParams.get('hora'),
+                data: urlParams.get('data')
+            };
+            return dados;
+        }
+
+        // Exibir os dados no container
+        function mostrarDados() {
+            const dados = getFormData();
+            const container = document.getElementById('dados-container');
+
+            if (dados.nome && dados.code && dados.litros && dados.hora && dados.data) {
+                container.innerHTML = `
+                    <p><strong>Nome:</strong> ${dados.nome}</p>
+                    <p><strong>Code:</strong> ${dados.code}</p>
+                    <p><strong>Litros:</strong> ${dados.litros}</p>
+                    <p><strong>Hora:</strong> ${dados.hora}</p>
+                    <p><strong>Data:</strong> ${dados.data}</p>
+                `;
+            } else {
+                container.innerHTML = <p>Nenhum dado recebido.</p>;
+            }
+        }
+
+        // Chamar a função ao carregar a página
+        mostrarDados();
+    </script>
+</body>
+</html> 

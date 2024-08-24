@@ -1,0 +1,18 @@
+
+       
+       body {
+        background-color:  linear-gradient( to right, rgb(171, 22, 22),#fff, #000000);
+       }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            align-items: center;
+            
+            
+        }
+        .dados p {
+            font-size: 1.2em;
+        }
+   
